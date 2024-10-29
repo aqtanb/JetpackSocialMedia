@@ -8,7 +8,7 @@ import kz.singularity.jetpackcompose.data.UserService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://5e510330f2c0d300147c034c.mockapi.io/"
+private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -16,7 +16,6 @@ object NetworkModule {
 
     @Provides
     fun provideRetrofit(
-        // Potential dependencies of this type
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)

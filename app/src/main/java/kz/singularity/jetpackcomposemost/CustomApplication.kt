@@ -9,10 +9,5 @@ class CustomApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-
-        startKoin {
-            modules(kz.singularity.jetpackcomposemost.di.koin.modules)
-        }
     }
 }

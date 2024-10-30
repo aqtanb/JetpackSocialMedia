@@ -1,7 +1,8 @@
-package kz.singularity.jetpackcomposemost.presentation.users
+package kz.singularity.jetpackcomposemost.presentation.profile
 
 import CardSection
 import InfoRow
+import LoadingState
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -13,6 +14,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,10 +27,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import kz.singularity.jetpackcomposemost.domain.model.User
 
 @Composable
-fun UserProfileContent(user: User) {
+fun ProfileContent(state: ProfileState, navController: NavController) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+    ) {
+        if (state.isLoadingUsers) {
+            LoadingState()
+        } else {
+            CurrentProfile(user = state.users.first(), navController)
+        }
+    }
+}
+
+@Composable
+fun CurrentProfile(user: User, navController: NavController) {
     val context = LocalContext.current
 
     Column(
@@ -68,7 +88,36 @@ fun UserProfileContent(user: User) {
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    navController.navigate("todos")
+                }
+            ,
+            shape = RoundedCornerShape(8.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            elevation = CardDefaults.cardElevation(4.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(
+                    text = "My ToDos",
+                    color = Color.Red,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
 
         CardSection(title = "Company") {
             InfoRow(
@@ -91,7 +140,7 @@ fun UserProfileContent(user: User) {
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         CardSection(title = "Address") {
             InfoRow(
@@ -134,11 +183,7 @@ fun UserProfileContent(user: User) {
                     modifier = Modifier
                         .align(Alignment.Center)
                         .clickable {
-                            val geoUri = Uri.parse(
-                                "geo:${user.address.geo.lat},${user.address.geo.lng}?q=${
-                                    Uri.encode("${user.address.geo.lat},${user.address.geo.lng}")
-                                }"
-                            )
+                            val geoUri = Uri.parse("geo:${user.address.geo.lat},${user.address.geo.lng}?q=${Uri.encode("${user.address.geo.lat},${user.address.geo.lng}")}")
                             val mapIntent = Intent(Intent.ACTION_VIEW, geoUri).apply {
                                 setPackage("com.google.android.apps.maps")
                             }
@@ -149,5 +194,3 @@ fun UserProfileContent(user: User) {
         }
     }
 }
-
-

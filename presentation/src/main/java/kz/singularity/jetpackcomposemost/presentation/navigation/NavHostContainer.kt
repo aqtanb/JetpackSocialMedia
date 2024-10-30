@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import kz.singularity.jetpackcomposemost.presentation.posts.AlbumsScreen
 import kz.singularity.jetpackcomposemost.presentation.posts.PostsScreen
-import kz.singularity.jetpackcomposemost.presentation.posts.ProfileScreen
+import kz.singularity.jetpackcomposemost.presentation.profile.ProfileScreen
 import kz.singularity.jetpackcomposemost.presentation.users.UserProfileScreen
 import kz.singularity.jetpackcomposemost.presentation.users.UsersScreen
 
@@ -22,11 +22,11 @@ fun NavHostContainer(
         modifier = Modifier.padding(padding),
     ) {
         composable("posts") {
-            PostsScreen()
+            PostsScreen(navController)
         }
 
         composable("albums") {
-            AlbumsScreen()
+            AlbumsScreen(navController)
         }
 
         composable("users") {
@@ -34,8 +34,9 @@ fun NavHostContainer(
         }
 
         composable("profile") {
-            ProfileScreen()
+            ProfileScreen(navController)
         }
+
         composable("userProfile/{userId}") { backStackEntry ->
             val userId = backStackEntry.arguments?.getString("userId")
             UserProfileScreen(userId)

@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.users
+package kz.singularity.jetpackcomposemost.presentation.profile
 
 import LoadingState
 import androidx.compose.runtime.Composable
@@ -7,18 +7,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun UserProfileScreen(userId: String?) {
+fun TodoScreen(userId: String?) {
 
-    val viewModel: UsersViewModel = hiltViewModel()
+    val viewModel = hiltViewModel<ProfileViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     val userIdInt = userId?.toIntOrNull()
-    val user = userIdInt?.let { id -> state.users.find { it.id == id } }
-
-    if (user != null) {
-        UserProfileContent(user)
+    if (userIdInt != null) {
+        TodoContent(state = state, userId = userIdInt)
     } else {
         LoadingState()
     }
 }
-

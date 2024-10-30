@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import kz.singularity.jetpackcomposemost.presentation.posts.AlbumsScreen
 import kz.singularity.jetpackcomposemost.presentation.posts.PostsScreen
 import kz.singularity.jetpackcomposemost.presentation.profile.ProfileScreen
+import kz.singularity.jetpackcomposemost.presentation.profile.TodoScreen
 import kz.singularity.jetpackcomposemost.presentation.users.UserProfileScreen
 import kz.singularity.jetpackcomposemost.presentation.users.UsersScreen
 
@@ -41,5 +42,11 @@ fun NavHostContainer(
             val userId = backStackEntry.arguments?.getString("userId")
             UserProfileScreen(userId)
         }
+
+        composable("todos/{userId}") { backStackEntry ->
+            val userId = backStackEntry.arguments?.getString("userId")
+            TodoScreen(userId)
+        }
+
     }
 }

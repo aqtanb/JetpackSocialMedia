@@ -94,7 +94,7 @@ fun CurrentProfile(user: User, navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    navController.navigate("todos")
+                    navController.navigate("todos/${user.id}")
                 }
             ,
             shape = RoundedCornerShape(8.dp),

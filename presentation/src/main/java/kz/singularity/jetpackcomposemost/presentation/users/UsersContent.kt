@@ -126,7 +126,7 @@ fun UserItem(user: User, navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun UsersContentPreview() {
-    val navController = rememberNavController()  // Create a dummy NavController
+    val navController = rememberNavController()
 
     UsersContent(
         state = UsersState(

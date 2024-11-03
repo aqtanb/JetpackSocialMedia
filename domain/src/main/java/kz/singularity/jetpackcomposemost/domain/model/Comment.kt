@@ -1,8 +1,9 @@
 package kz.singularity.jetpackcomposemost.domain.model
 
-data class Post(
-    val userId: Int,
+data class Comment(
+    val postId: Int,
     val id: Int,
-    val title: String,
+    val name: String,
+    val email: String,
     val body: String
 )

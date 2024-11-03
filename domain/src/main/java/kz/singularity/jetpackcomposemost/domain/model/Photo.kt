@@ -1,8 +1,9 @@
 package kz.singularity.jetpackcomposemost.domain.model
 
-data class Post(
-    val userId: Int,
+data class Photo (
+    val albumId: Int,
     val id: Int,
     val title: String,
-    val body: String
+    val url: String,
+    val thumbnailUrl: String
 )

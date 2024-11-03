@@ -1,3 +1,4 @@
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -5,8 +6,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import kz.singularity.jetpackcomposemost.presentation.posts.AlbumsScreen
-import kz.singularity.jetpackcomposemost.presentation.posts.PostsScreen
+import kz.singularity.jetpackcomposemost.presentation.albums.PhotoScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.AlbumScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.screens.CommentScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.screens.PostDetailScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.screens.PostScreen
 import kz.singularity.jetpackcomposemost.presentation.profile.ProfileScreen
 import kz.singularity.jetpackcomposemost.presentation.profile.TodoScreen
 import kz.singularity.jetpackcomposemost.presentation.users.UserProfileScreen
@@ -23,11 +27,11 @@ fun NavHostContainer(
         modifier = Modifier.padding(padding),
     ) {
         composable("posts") {
-            PostsScreen(navController)
+            PostScreen(navController)
         }
 
         composable("albums") {
-            AlbumsScreen(navController)
+            AlbumScreen(navController)
         }
 
         composable("users") {
@@ -46,6 +50,23 @@ fun NavHostContainer(
         composable("todos/{userId}") { backStackEntry ->
             val userId = backStackEntry.arguments?.getString("userId")
             TodoScreen(userId)
+        }
+
+        composable("photos/{albumId}/{username}") { backStackEntry ->
+            val albumId = backStackEntry.arguments?.getString("albumId")
+            val username = backStackEntry.arguments?.getString("username")
+            PhotoScreen(albumId, username)
+        }
+
+        composable("postDetail/{postId}/{userId}") { backstackEntry ->
+            val postId = backstackEntry.arguments?.getString("postId")
+            val userId = backstackEntry.arguments?.getString("userId")
+            PostDetailScreen(postId, userId, navController)
+        }
+
+        composable("comments/{postId}") { backstackEntry ->
+            val postId = backstackEntry.arguments?.getString("postId")
+            CommentScreen(postId)
         }
 
     }

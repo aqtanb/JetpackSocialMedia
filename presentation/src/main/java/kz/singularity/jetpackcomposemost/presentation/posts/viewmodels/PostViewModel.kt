@@ -16,8 +16,8 @@ import javax.inject.Inject
 data class PostState (
     val posts: List<Post> = emptyList(),
     val comments: Map<Int, List<Comment>> = emptyMap(),
-    val isLoading: Boolean = true,
-    areCommentsLoading: Boolean = true
+    val isLoadingPosts: Boolean = true,
+    val isLoadingComments: Boolean = true
 )
 
 @HiltViewModel
@@ -36,14 +36,21 @@ class PostViewModel @Inject constructor(
     private fun loadPost() {
         viewModelScope.launch(Dispatchers.IO) {
             val posts = getPostUseCase.invoke()
-            _state.value = _state.value.copy(posts = posts)
+            _state.value = _state.value.copy(posts = posts, isLoadingPosts = false)
+            loadComment()
+        }
+    }
 
-            val commentsMap = posts.associate { post ->
-                post.id to getCommentUseCase.invoke(post.id)
+    private fun loadComment() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val posts = _state.value.posts
+
+            if (posts.isNotEmpty()) {
+                val commentsMap = posts.associate { post ->
+                    post.id to getCommentUseCase.invoke(post.id)
+                }
+                _state.value = _state.value.copy(comments = commentsMap, isLoadingComments = false)
             }
-
-            _state.value = _state.value.copy(comments = commentsMap, isLoading = false)
-
         }
     }
 }

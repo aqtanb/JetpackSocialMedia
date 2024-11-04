@@ -17,33 +17,35 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import kz.singularity.jetpackcomposemost.domain.model.Comment
 import kz.singularity.jetpackcomposemost.domain.model.Post
+import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
 
 @Composable
 fun PostDetailContent(
-    post: Post,
-    comments: List<Comment>,
+    state: PostState,
+    postId: Int,
     author: String,
-    isLoading: Boolean,
     navHostController: NavHostController) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
             .padding(16.dp)
     ) {
-        if (isLoading) {
+        if (state.isLoadingPosts || state.isLoadingComments) {
             LoadingState()
         } else {
-            PostDetailItem(post = post, comments = comments, author = author, navHostController)
+            PostDetailItem(
+                post = state.posts.find { it.id == postId }!!,
+                comments = state.comments[postId]!!,
+                author = author,
+                navHostController = navHostController
+            )
         }
     }
 }
@@ -100,30 +102,4 @@ fun PostDetailItem(
             email = comments.first().email
         )
     }
-}
-
-
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun PostDetailContentPreview() {
-    PostDetailContent(
-        post = Post(
-            userId = 1,
-            id = 1,
-            title = "Sample Post Title",
-            body = "This is a sample post body for preview purposes."
-        ),
-        comments = listOf(
-            Comment(
-                postId = 1,
-                id = 1,
-                name = "Sample Commenter",
-                email = "sample@example.com",
-                body = "This is a sample comment body."
-                )
-            ),
-        author = "Firstname Lastname",
-        isLoading = false,
-        rememberNavController()
-    )
 }

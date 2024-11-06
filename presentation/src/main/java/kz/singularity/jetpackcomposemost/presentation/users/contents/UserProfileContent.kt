@@ -1,8 +1,7 @@
-package kz.singularity.jetpackcomposemost.presentation.profile
+package kz.singularity.jetpackcomposemost.presentation.users.contents
 
-import CardSection
+import InfoCard
 import InfoRow
-import LoadingState
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -14,9 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,30 +23,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import kz.singularity.jetpackcomposemost.domain.model.User
 
 @Composable
-fun ProfileContent(state: ProfileState, navController: NavController) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White)
-    ) {
-        if (state.isLoadingUsers) {
-            LoadingState()
-        } else {
-            CurrentProfile(user = state.users.first(), navController)
-        }
-    }
-}
-
-@Composable
-fun CurrentProfile(user: User, navController: NavController) {
+fun UserProfileContent(user: User) {
     val context = LocalContext.current
+    val phoneNumber = user.phone.filter { it.isDigit() }.substring(0, 11)
 
     Column(
-        modifier = Modifier.fillMaxSize().background(color = Color.White)
+        modifier = Modifier.fillMaxSize().background(color = Color.White).padding(16.dp)
     ) {
         Text(
             text = user.username,
@@ -61,12 +42,19 @@ fun CurrentProfile(user: User, navController: NavController) {
             textAlign = TextAlign.Center
         )
 
-        CardSection(title = "Contacts") {
+        InfoCard(title = "Contacts") {
             InfoRow(
                 label = "Email",
                 value = user.email,
                 labelColor = Color.Gray,
-                valueColor = Color.Blue
+                valueColor = Color.Blue,
+                modifier = Modifier.clickable {
+                    val emailIntent =
+                        Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:${user.email}")
+                    }
+                    context.startActivity(emailIntent)
+                }
             )
             InfoRow(
                 label = "Full Name",
@@ -76,50 +64,33 @@ fun CurrentProfile(user: User, navController: NavController) {
             )
             InfoRow(
                 label = "Phone",
-                value = user.phone,
+                value = phoneNumber,
                 labelColor = Color.Gray,
-                valueColor = Color.Red
+                valueColor = Color.Red,
+                modifier = Modifier.clickable {
+                    val phoneIntent =
+                        Intent(Intent.ACTION_DIAL).apply {
+                        data = Uri.parse("tel:$phoneNumber")
+                    }
+                    context.startActivity(phoneIntent)
+                }
             )
             InfoRow(
                 label = "Website",
                 value = user.website,
                 labelColor = Color.Gray,
-                valueColor = Color.Blue
+                valueColor = Color.Blue,
+                modifier = Modifier.clickable {
+                    val websiteIntent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse("https://${user.website}"))
+                    context.startActivity(websiteIntent)
+                }
             )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable {
-                    navController.navigate("todos/${user.id}")
-                }
-            ,
-            shape = RoundedCornerShape(8.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            elevation = CardDefaults.cardElevation(4.dp)
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(
-                    text = "My ToDos",
-                    color = Color.Red,
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        CardSection(title = "Company") {
+        InfoCard(title = "Company") {
             InfoRow(
                 label = "Company Name",
                 value = user.company.name,
@@ -140,9 +111,9 @@ fun CurrentProfile(user: User, navController: NavController) {
             )
         }
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-        CardSection(title = "Address") {
+        InfoCard(title = "Address") {
             InfoRow(
                 label = "Street",
                 value = user.address.street,
@@ -183,7 +154,11 @@ fun CurrentProfile(user: User, navController: NavController) {
                     modifier = Modifier
                         .align(Alignment.Center)
                         .clickable {
-                            val geoUri = Uri.parse("geo:${user.address.geo.lat},${user.address.geo.lng}?q=${Uri.encode("${user.address.geo.lat},${user.address.geo.lng}")}")
+                            val geoUri = Uri.parse(
+                                "geo:${user.address.geo.lat},${user.address.geo.lng}?q=${
+                                    Uri.encode("${user.address.geo.lat},${user.address.geo.lng}")
+                                }"
+                            )
                             val mapIntent = Intent(Intent.ACTION_VIEW, geoUri).apply {
                                 setPackage("com.google.android.apps.maps")
                             }
@@ -194,3 +169,5 @@ fun CurrentProfile(user: User, navController: NavController) {
         }
     }
 }
+
+

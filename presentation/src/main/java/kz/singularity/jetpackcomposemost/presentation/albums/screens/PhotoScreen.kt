@@ -1,10 +1,12 @@
-package kz.singularity.jetpackcomposemost.presentation.albums
+package kz.singularity.jetpackcomposemost.presentation.albums.screens
 
 import LoadingState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kz.singularity.jetpackcomposemost.presentation.albums.contents.PhotoContent
+import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumViewModel
 
 
 @Composable
@@ -14,7 +16,7 @@ fun PhotoScreen(albumId: String?, username: String?) {
 
     val albumIdInt = albumId?.toIntOrNull()
     if (albumIdInt != null) {
-        PhotoContent(state = state, username = username, albumIdInt)
+        PhotoContent(albumState = state, username = username, albumIdInt)
     } else {
         LoadingState()
     }

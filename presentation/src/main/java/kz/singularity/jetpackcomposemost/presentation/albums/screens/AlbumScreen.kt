@@ -1,13 +1,13 @@
-package kz.singularity.jetpackcomposemost.presentation.posts
+package kz.singularity.jetpackcomposemost.presentation.albums.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import kz.singularity.jetpackcomposemost.presentation.albums.AlbumContent
-import kz.singularity.jetpackcomposemost.presentation.albums.AlbumViewModel
-import kz.singularity.jetpackcomposemost.presentation.users.UsersViewModel
+import kz.singularity.jetpackcomposemost.presentation.albums.contents.AlbumContent
+import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumViewModel
+import kz.singularity.jetpackcomposemost.presentation.users.viewmodels.UsersViewModel
 
 @Composable
 fun AlbumScreen(navController: NavHostController) {

@@ -27,7 +27,7 @@ import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
 
 @Composable
 fun PostDetailContent(
-    state: PostState,
+    postState: PostState,
     postId: Int,
     author: String,
     navHostController: NavHostController) {
@@ -37,12 +37,14 @@ fun PostDetailContent(
             .background(color = Color.White)
             .padding(16.dp)
     ) {
-        if (state.isLoadingPosts || state.isLoadingComments) {
+        val post = postState.posts.find { it.id == postId }
+        val comments = postState.comments[postId]
+        if (postState.isLoadingComments || post == null || comments == null) {
             LoadingState()
         } else {
             PostDetailItem(
-                post = state.posts.find { it.id == postId }!!,
-                comments = state.comments[postId]!!,
+                post = post,
+                comments = comments,
                 author = author,
                 navHostController = navHostController
             )
@@ -92,7 +94,7 @@ fun PostDetailItem(
                 fontSize = 16.sp,
                 color = Color.Blue,
                 modifier = Modifier.clickable {
-                    navHostController.navigate("comments/${post.id}")
+                    navHostController.navigate("posts/postDetail/comments/${post.id}")
                 }
             )
         }

@@ -1,10 +1,12 @@
-package kz.singularity.jetpackcomposemost.presentation.users
+package kz.singularity.jetpackcomposemost.presentation.users.screens
 
 import LoadingState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kz.singularity.jetpackcomposemost.presentation.users.viewmodels.UsersViewModel
+import kz.singularity.jetpackcomposemost.presentation.users.contents.UserProfileContent
 
 @Composable
 fun UserProfileScreen(userId: String?) {

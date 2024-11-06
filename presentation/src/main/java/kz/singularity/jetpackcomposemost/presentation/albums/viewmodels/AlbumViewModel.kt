@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.albums
+package kz.singularity.jetpackcomposemost.presentation.albums.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -30,7 +30,7 @@ fun PostCard(title: String, body: String, modifier: Modifier = Modifier) {
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Column (
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp).fillMaxWidth()
         ) {
             Text(
                 text = title,

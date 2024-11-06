@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.albums
+package kz.singularity.jetpackcomposemost.presentation.albums.contents
 import LoadingState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,7 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import kz.singularity.jetpackcomposemost.domain.model.Album
+import kz.singularity.jetpackcomposemost.domain.model.Photo
 import kz.singularity.jetpackcomposemost.domain.model.User
+import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.AlbumCard
 
 @Composable
@@ -25,10 +27,10 @@ fun AlbumContent(state: AlbumState, navController: NavHostController, users: Lis
             .fillMaxSize()
             .background(color = Color.White)
     ) {
-        if (state.isLoadingAlbums) {
+        if (state.isLoadingAlbums || state.isLoadingPhotos) {
             LoadingState()
         } else {
-            AlbumList(state.albums, navController, users)
+            AlbumList(state.albums, navController, users, state.photos)
         }
     }
 }
@@ -38,6 +40,7 @@ fun AlbumList(
     albums: List<Album>,
     navController: NavController,
     users: List<User>,
+    photos: List<Photo>
     ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -48,8 +51,9 @@ fun AlbumList(
                 albumName = album.title,
                 username = users.find { it.id == album.userId }?.username ?: "",
                 ratio = 16 / 9f,
+                imageUrl = photos.find { it.albumId == album.id }?.url ?: "",
                 modifier = Modifier.clickable {
-                    navController.navigate("photos/${album.id}" +
+                    navController.navigate("albums/photos/${album.id}" +
                             "/${users.find { it.id == album.userId }?.username ?: ""}")
                 }
             )

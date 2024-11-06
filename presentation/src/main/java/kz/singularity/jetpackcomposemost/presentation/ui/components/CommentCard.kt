@@ -1,7 +1,10 @@
 package kz.singularity.jetpackcomposemost.presentation.ui.components
 
 import InfoRow
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,6 +25,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CommentCard(title: String, body: String, email: String) {
+    val context = LocalContext.current
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -35,6 +40,7 @@ fun CommentCard(title: String, body: String, email: String) {
             Text(
                 text = title,
                 fontSize = 18.sp,
+                color = Color.Black,
                 fontWeight = FontWeight.ExtraBold
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -42,13 +48,20 @@ fun CommentCard(title: String, body: String, email: String) {
                 label = "Email",
                 value = email,
                 labelColor = Color.Gray,
-                valueColor = Color.Blue
+                valueColor = Color.Blue,
+                modifier = Modifier.clickable {
+                    val emailIntent =
+                        Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("mailto:${email}")
+                        }
+                    context.startActivity(emailIntent)
+                }
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = body,
                 fontSize = 16.sp,
-                color = Color.Gray
+                color = Color.Black
             )
         }
     }

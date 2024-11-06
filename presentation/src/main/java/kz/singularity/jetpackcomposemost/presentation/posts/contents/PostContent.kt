@@ -43,7 +43,7 @@ fun PostList(state: PostState, navController: NavHostController) {
                 title = item.title,
                 body = item.body,
                 modifier = Modifier.clickable {
-                    navController.navigate("postDetail/${item.id}/${item.userId}")
+                    navController.navigate("posts/postDetail/${item.id}/${item.userId}")
                 }
 
             )

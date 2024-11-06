@@ -1,10 +1,12 @@
-package kz.singularity.jetpackcomposemost.presentation.profile
+package kz.singularity.jetpackcomposemost.presentation.profile.screens
 
 import LoadingState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kz.singularity.jetpackcomposemost.presentation.profile.viewmodels.ProfileViewModel
+import kz.singularity.jetpackcomposemost.presentation.profile.contents.TodoContent
 
 @Composable
 fun TodoScreen(userId: String?) {

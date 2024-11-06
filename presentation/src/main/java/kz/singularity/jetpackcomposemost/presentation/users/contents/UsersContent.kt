@@ -1,6 +1,9 @@
-package kz.singularity.jetpackcomposemost.presentation.users
+package kz.singularity.jetpackcomposemost.presentation.users.contents
 
+import InfoRow
 import LoadingState
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -19,10 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,6 +33,7 @@ import kz.singularity.jetpackcomposemost.domain.model.Address
 import kz.singularity.jetpackcomposemost.domain.model.Company
 import kz.singularity.jetpackcomposemost.domain.model.Geo
 import kz.singularity.jetpackcomposemost.domain.model.User
+import kz.singularity.jetpackcomposemost.presentation.users.viewmodels.UsersState
 
 @Composable
 fun UsersContent(state: UsersState, navController: NavController) {
@@ -72,10 +74,11 @@ fun UsersList(users: List<User>, navController: NavController) {
 
 @Composable
 fun UserItem(user: User, navController: NavController) {
+    val context = LocalContext.current
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { navController.navigate("userProfile/${user.id}") }
+            .clickable { navController.navigate("users/userProfile/${user.id}") }
         ,
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
@@ -95,28 +98,23 @@ fun UserItem(user: User, navController: NavController) {
                 fontSize = 20.sp,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
-            Text(
-                text = buildAnnotatedString {
-                    withStyle(style = SpanStyle(
-                        color = Color.Gray)) {
-                        append("Full Name: ")
-                    }
-                    withStyle(style = SpanStyle(
-                        color = Color.Black)) {
-                        append(user.name)
-                    }
-                }
+            InfoRow(
+                label = "Full Name",
+                value = user.name,
+                labelColor = Color.Gray,
+                valueColor = Color.Black
             )
-            Text(
-                text = buildAnnotatedString {
-                    withStyle(style = SpanStyle(
-                        color = Color.Gray)) {
-                        append("Email: ")
-                    }
-                    withStyle(style = SpanStyle(
-                        color = Color.Blue)) {
-                        append(user.email)
-                    }
+            InfoRow(
+                label = "Email",
+                value = user.email,
+                labelColor = Color.Gray,
+                valueColor = Color.Blue,
+                modifier = Modifier.clickable {
+                    val emailIntent =
+                        Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("mailto:${user.email}")
+                        }
+                    context.startActivity(emailIntent)
                 }
             )
         }

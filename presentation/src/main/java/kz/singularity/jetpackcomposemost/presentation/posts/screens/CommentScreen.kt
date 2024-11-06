@@ -14,5 +14,5 @@ fun CommentScreen(postId: String?) {
     val postState by postViewModel.state.collectAsStateWithLifecycle()
     val postIdInt = postId?.toIntOrNull()
     val comments: List<Comment> = postState.comments[postIdInt] ?: emptyList()
-    CommentContent(comments = comments)
+    CommentContent(postState, comments = comments)
 }

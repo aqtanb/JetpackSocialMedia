@@ -32,7 +32,7 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 
             BottomNavigationItem(
-                selected = currentRoute == navItem.route,
+                selected = currentRoute?.startsWith(navItem.route) == true,
                 onClick = {
                     if (currentRoute != navItem.route) {
                         navController.navigate(navItem.route) {
@@ -42,10 +42,14 @@ fun BottomNavigationBar(navController: NavHostController) {
                     }
                 },
                 icon = {
-                    Icon(imageVector = navItem.icon, contentDescription = navItem.label)
+                    Icon(
+                        imageVector = navItem.icon,
+                        contentDescription = navItem.label,
+                        tint = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray // Change color based on selection
+                    )
                 },
                 label = {
-                    Text(text = navItem.label)
+                    Text(text = navItem.label, color = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray) // Change label color based on selection
                 },
                 alwaysShowLabel = false
             )

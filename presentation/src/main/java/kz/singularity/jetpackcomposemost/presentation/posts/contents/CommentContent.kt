@@ -1,5 +1,6 @@
 package kz.singularity.jetpackcomposemost.presentation.posts.contents
 
+import LoadingState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,17 +16,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Comment
+import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
 
 @Composable
-fun CommentContent(comments: List<Comment>) {
+fun CommentContent(postState: PostState, comments: List<Comment>) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
             .padding(16.dp)
     ) {
-        CommentList(comments = comments)
+        if (postState.isLoadingComments) {
+            LoadingState()
+        } else {
+            CommentList(comments = comments)
+        }
     }
 }
 
@@ -36,7 +42,7 @@ fun CommentList(comments: List<Comment>) {
     ) {
         item {
             Text(
-                text = "Users",
+                text = "Comments",
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,

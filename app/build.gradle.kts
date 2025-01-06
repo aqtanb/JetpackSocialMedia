@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
-    id("kotlin-kapt")
+    alias(libs.plugins.compose.compiler)
     id("com.google.dagger.hilt.android")
+    alias(libs.plugins.google.ksp)
 }
 
 android {
@@ -50,9 +50,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    kapt {
-        correctErrorTypes = true
+    ksp {
+        arg("correctErrorTypes", "true")
     }
+
 
 }
 
@@ -74,37 +75,30 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    val nav_version = "2.8.0-beta07"
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
-    implementation("androidx.navigation:navigation-compose:$nav_version")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-
-
-
-    implementation ("com.squareup.retrofit2:retrofit:2.6.0")
-    implementation ("com.google.code.gson:gson:2.8.5")
-    implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:3.12.0")
+    implementation (libs.retrofit)
+    implementation (libs.gson)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
 
 
-    implementation("io.insert-koin:koin-core:3.2.0")
-    implementation("io.insert-koin:koin-android:3.2.0")
-    implementation("io.insert-koin:koin-androidx-compose:3.2.0")
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.hilt.android)
+    ksp (libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose.v100)
 
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":presentation"))
 
-
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-// optional - Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:$room_version")
+    implementation(libs.androidx.room.runtime)
+    ksp (libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }

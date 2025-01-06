@@ -1,8 +1,8 @@
 package kz.singularity.jetpackcomposemost.presentation.profile.contents
 
-import InfoCard
-import InfoRow
-import LoadingState
+import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoCard
+import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoRow
+import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background

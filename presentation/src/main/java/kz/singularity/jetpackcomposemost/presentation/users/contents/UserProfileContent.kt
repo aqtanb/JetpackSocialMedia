@@ -1,7 +1,7 @@
 package kz.singularity.jetpackcomposemost.presentation.users.contents
 
-import InfoCard
-import InfoRow
+import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoCard
+import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoRow
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background

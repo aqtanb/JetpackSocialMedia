@@ -1,11 +1,12 @@
+package kz.singularity.jetpackcomposemost.presentation.navigation
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -14,8 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import kz.singularity.jetpackcomposemost.util.Constants
-import kz.singularity.jetpackcomposemost.util.Routes
-import kz.singularity.presentation.R
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {

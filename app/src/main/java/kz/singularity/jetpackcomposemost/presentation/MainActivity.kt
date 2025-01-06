@@ -1,7 +1,7 @@
 package kz.singularity.jetpackcomposemost.presentation
 
 import BottomNavigationBar
-import NavHostContainer
+import kz.singularity.jetpackcomposemost.presentation.navigation.NavHostContainer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

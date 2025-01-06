@@ -1,3 +1,4 @@
+package kz.singularity.jetpackcomposemost.presentation.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding

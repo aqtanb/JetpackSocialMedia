@@ -1,6 +1,6 @@
 package kz.singularity.jetpackcomposemost.presentation.albums.screens
 
-import LoadingState
+import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel

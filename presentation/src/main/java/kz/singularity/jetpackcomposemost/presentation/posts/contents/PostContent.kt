@@ -1,6 +1,6 @@
 package kz.singularity.jetpackcomposemost.presentation.posts.contents
 
-import LoadingState
+import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

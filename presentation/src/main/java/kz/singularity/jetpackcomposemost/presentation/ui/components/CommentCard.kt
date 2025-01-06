@@ -1,6 +1,5 @@
 package kz.singularity.jetpackcomposemost.presentation.ui.components
 
-import InfoRow
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background

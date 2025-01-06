@@ -1,5 +1,4 @@
 package kz.singularity.jetpackcomposemost.util
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email

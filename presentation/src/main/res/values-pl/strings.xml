@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kurwa</string>
+    <string name="loading">Kurwa</string>
+    <string name="change_the_grid">Kurwa</string>
+    <string name="comments">Kurwa</string>
+    <string name="by">Kurwa</string>
+    <string name="show_all">Kurwa</string>
+    <string name="contacts">Kurwa</string>
+    <string name="email">Kurwa</string>
+    <string name="full_name">Kurwa</string>
+    <string name="phone">Kurwa</string>
+    <string name="website">Kurwa</string>
+    <string name="my_todos">Kurwa</string>
+    <string name="company">Kurwa</string>
+    <string name="company_name">Kurwa</string>
+    <string name="catch_phrase">Kurwa</string>
+    <string name="business_services">Kurwa</string>
+    <string name="address">Kurwa</string>
+    <string name="street">Kurwa</string>
+    <string name="suite">Kurwa</string>
+    <string name="city">Kurwa</string>
+    <string name="zipcode">Kurwa</string>
+    <string name="show_on_map">Kurwa</string>
+    <string name="your_todos">Kurwa</string>
+    <string name="album_image">Kurwa</string>
+    <string name="error_loading_image">Kurwa</string>
+    <string name="users">Kurwa</string>
+    <string name="albums">Kurwa</string>
+    <string name="profile">Kurwa</string>
+    <string name="posts">Kurwa</string>
+</resources>

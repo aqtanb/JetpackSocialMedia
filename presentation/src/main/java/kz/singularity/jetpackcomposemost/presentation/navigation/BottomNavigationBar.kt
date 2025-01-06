@@ -10,9 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import kz.singularity.jetpackcomposemost.util.Constants
+import kz.singularity.jetpackcomposemost.util.Routes
+import kz.singularity.presentation.R
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
@@ -32,6 +35,19 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 
             BottomNavigationItem(
+                label = {
+                    Text(
+                        text = stringResource(id = navItem.label),
+                        color = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray
+                    )
+                },
+                icon = {
+                    Icon(
+                        imageVector = navItem.icon,
+                        contentDescription = stringResource(id = navItem.label),
+                        tint = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray
+                    )
+                },
                 selected = currentRoute?.startsWith(navItem.route) == true,
                 onClick = {
                     if (currentRoute != navItem.route) {
@@ -40,19 +56,9 @@ fun BottomNavigationBar(navController: NavHostController) {
                             restoreState = true
                         }
                     }
-                },
-                icon = {
-                    Icon(
-                        imageVector = navItem.icon,
-                        contentDescription = navItem.label,
-                        tint = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray // Change color based on selection
-                    )
-                },
-                label = {
-                    Text(text = navItem.label, color = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray) // Change label color based on selection
-                },
-                alwaysShowLabel = false
+                }
             )
+
         }
     }
 }

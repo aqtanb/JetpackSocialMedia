@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Сингулярлық</string>
+    <string name="loading">Жүктелуде…</string>
+    <string name="change_the_grid">Торды өзгерту</string>
+    <string name="comments">Пікірлер</string>
+    <string name="by">Авторы</string>
+    <string name="show_all">Барлығын көрсету</string>
+    <string name="contacts">Байланыс</string>
+    <string name="email">Электрондық пошта</string>
+    <string name="full_name">Толық аты</string>
+    <string name="phone">Телефон</string>
+    <string name="website">Веб-сайт</string>
+    <string name="my_todos">Менің тапсырмаларым</string>
+    <string name="company">Компания</string>
+    <string name="company_name">Компания атауы</string>
+    <string name="catch_phrase">Ұран</string>
+    <string name="business_services">Бизнес қызметтері</string>
+    <string name="address">Мекенжай</string>
+    <string name="street">Көше</string>
+    <string name="suite">Пәтер</string>
+    <string name="city">Қала</string>
+    <string name="zipcode">Пошталық индекс</string>
+    <string name="show_on_map">Картадан көрсету</string>
+    <string name="your_todos">Сіздің тапсырмаларыңыз</string>
+    <string name="album_image">Альбом суреті</string>
+    <string name="error_loading_image">Суретті жүктеу қателігі</string>
+    <string name="users">Пайдаланушылар</string>
+    <string name="albums">Альбомдар</string>
+    <string name="profile">Профиль</string>
+    <string name="posts">Посттар</string>
+</resources>

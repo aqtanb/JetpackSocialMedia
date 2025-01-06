@@ -12,12 +12,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Comment
 import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
+import kz.singularity.presentation.R
 
 @Composable
 fun CommentContent(postState: PostState, comments: List<Comment>) {
@@ -42,7 +44,7 @@ fun CommentList(comments: List<Comment>) {
     ) {
         item {
             Text(
-                text = "Comments",
+                text = stringResource(R.string.comments),
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,

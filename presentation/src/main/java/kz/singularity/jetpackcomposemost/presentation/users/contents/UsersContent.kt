@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,6 +35,8 @@ import kz.singularity.jetpackcomposemost.domain.model.Company
 import kz.singularity.jetpackcomposemost.domain.model.Geo
 import kz.singularity.jetpackcomposemost.domain.model.User
 import kz.singularity.jetpackcomposemost.presentation.users.viewmodels.UsersState
+import kz.singularity.jetpackcomposemost.util.Routes
+import kz.singularity.presentation.R
 
 @Composable
 fun UsersContent(state: UsersState, navController: NavController) {
@@ -58,7 +61,7 @@ fun UsersList(users: List<User>, navController: NavController) {
     ) {
         item {
             Text(
-                text = "Users",
+                text = stringResource(R.string.users),
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
                 fontSize = 24.sp,
@@ -78,7 +81,12 @@ fun UserItem(user: User, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { navController.navigate("users/userProfile/${user.id}") }
+            .clickable {
+                navController.navigate(
+                    Routes.USER_PROFILE.replace("{userId}", user.id.toString())
+                )
+            }
+
         ,
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
@@ -99,13 +107,13 @@ fun UserItem(user: User, navController: NavController) {
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             InfoRow(
-                label = "Full Name",
+                label = stringResource(R.string.full_name),
                 value = user.name,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Email",
+                label = stringResource(R.string.email),
                 value = user.email,
                 labelColor = Color.Gray,
                 valueColor = Color.Blue,

@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Todo
 import kz.singularity.jetpackcomposemost.presentation.profile.viewmodels.ProfileState
+import kz.singularity.presentation.R
 
 @Composable
 fun TodoContent(state: ProfileState, userId: Int) {
@@ -44,7 +46,7 @@ fun TodoContent(state: ProfileState, userId: Int) {
             .padding(16.dp)
     ) {
         Text(
-            text = "Your ToDos",
+            text = stringResource(R.string.your_todos),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black,

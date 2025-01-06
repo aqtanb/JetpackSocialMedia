@@ -5,29 +5,33 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.ui.res.stringResource
 import kz.singularity.jetpackcomposemost.presentation.navigation.BottomNavItem
+import kz.singularity.presentation.R
+
+
 
 object Constants {
     val BottomNavItems = listOf(
         BottomNavItem(
-            label = "Posts",
             icon = Icons.Filled.Home,
-            route = "posts"
+            route = Routes.POSTS,
+            label = R.string.posts
         ),
         BottomNavItem(
-            label = "Albums",
             icon = Icons.Filled.Menu,
-            route = "albums"
+            route = Routes.ALBUMS,
+            label = R.string.albums
         ),
         BottomNavItem(
-            label = "Users",
             icon = Icons.Filled.Email,
-            route = "users"
+            route = Routes.USERS,
+            label = R.string.users
         ),
         BottomNavItem(
-            label = "Profile",
             icon = Icons.Filled.AccountCircle,
-            route = "profile"
+            route = Routes.PROFILE,
+            label = R.string.profile
         )
     )
 }

@@ -15,6 +15,7 @@ import kz.singularity.jetpackcomposemost.presentation.profile.screens.ProfileScr
 import kz.singularity.jetpackcomposemost.presentation.profile.screens.TodoScreen
 import kz.singularity.jetpackcomposemost.presentation.users.screens.UserProfileScreen
 import kz.singularity.jetpackcomposemost.presentation.users.screens.UsersScreen
+import kz.singularity.jetpackcomposemost.util.Routes
 
 @Composable
 fun NavHostContainer(
@@ -23,51 +24,50 @@ fun NavHostContainer(
 ) {
     NavHost(
         navController = navController,
-        startDestination = "posts",
+        startDestination = Routes.POSTS,
         modifier = Modifier.padding(padding),
     ) {
-        composable("posts") {
+        composable(Routes.POSTS) {
             PostScreen(navController)
         }
 
-        composable("posts/postDetail/{postId}/{userId}") { backStackEntry ->
+        composable(Routes.POST_DETAIL) { backStackEntry ->
             val postId = backStackEntry.arguments?.getString("postId")
             val userId = backStackEntry.arguments?.getString("userId")
             PostDetailScreen(postId, userId, navController)
         }
 
-        composable("posts/postDetail/comments/{postId}") { backStackEntry ->
+        composable(Routes.COMMENTS) { backStackEntry ->
             val postId = backStackEntry.arguments?.getString("postId")
             CommentScreen(postId)
         }
 
-        composable("albums") {
+        composable(Routes.ALBUMS) {
             AlbumScreen(navController)
         }
 
-        composable("albums/photos/{albumId}/{username}") { backStackEntry ->
+        composable(Routes.PHOTOS) { backStackEntry ->
             val albumId = backStackEntry.arguments?.getString("albumId")
             val username = backStackEntry.arguments?.getString("username")
             PhotoScreen(albumId, username)
         }
 
-        composable("users") {
+        composable(Routes.USERS) {
             UsersScreen(navController)
         }
 
-        composable("users/userProfile/{userId}") { backStackEntry ->
+        composable(Routes.USER_PROFILE) { backStackEntry ->
             val userId = backStackEntry.arguments?.getString("userId")
             UserProfileScreen(userId)
         }
 
-        composable("profile") {
+        composable(Routes.PROFILE) {
             ProfileScreen(navController)
         }
 
-        composable("profile/todos/{userId}") { backStackEntry ->
+        composable(Routes.TODOS) { backStackEntry ->
             val userId = backStackEntry.arguments?.getString("userId")
             TodoScreen(userId)
         }
     }
-
 }

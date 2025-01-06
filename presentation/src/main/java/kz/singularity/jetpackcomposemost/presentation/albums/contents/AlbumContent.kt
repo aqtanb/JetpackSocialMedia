@@ -19,6 +19,7 @@ import kz.singularity.jetpackcomposemost.domain.model.Photo
 import kz.singularity.jetpackcomposemost.domain.model.User
 import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.AlbumCard
+import kz.singularity.jetpackcomposemost.util.Routes
 
 @Composable
 fun AlbumContent(state: AlbumState, navController: NavHostController, users: List<User>) {
@@ -53,8 +54,10 @@ fun AlbumList(
                 ratio = 16 / 9f,
                 imageUrl = photos.find { it.albumId == album.id }?.url ?: "",
                 modifier = Modifier.clickable {
-                    navController.navigate("albums/photos/${album.id}" +
-                            "/${users.find { it.id == album.userId }?.username ?: ""}")
+                    val route = Routes.PHOTOS
+                        .replace("{albumId}", album.id.toString())
+                        .replace("{username}", users.find { it.id == album.userId }?.username ?: "")
+                    navController.navigate(route)
                 }
             )
         }

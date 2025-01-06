@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,6 +25,8 @@ import kz.singularity.jetpackcomposemost.domain.model.Comment
 import kz.singularity.jetpackcomposemost.domain.model.Post
 import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
+import kz.singularity.jetpackcomposemost.util.Routes
+import kz.singularity.presentation.R
 
 @Composable
 fun PostDetailContent(
@@ -69,7 +72,7 @@ fun PostDetailItem(
             color = Color.Black
         )
         InfoRow(
-            label = "By",
+            label = stringResource(R.string.by),
             value = author,
             labelColor = Color.Black,
             valueColor = Color.Magenta
@@ -83,18 +86,21 @@ fun PostDetailItem(
             verticalAlignment = Alignment.CenterVertically,
         ){
             Text(
-                text = "Comments",
+                text = stringResource(R.string.comments),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = "Show All",
+                text = stringResource(R.string.show_all),
                 fontSize = 16.sp,
                 color = Color.Blue,
                 modifier = Modifier.clickable {
-                    navHostController.navigate("posts/postDetail/comments/${post.id}")
+                    navHostController.navigate(
+                        Routes.COMMENTS.replace("{postId}", post.id.toString())
+                    )
+
                 }
             )
         }

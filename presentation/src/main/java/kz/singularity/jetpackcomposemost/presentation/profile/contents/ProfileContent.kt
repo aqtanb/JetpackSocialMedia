@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -30,6 +31,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import kz.singularity.jetpackcomposemost.domain.model.User
 import kz.singularity.jetpackcomposemost.presentation.profile.viewmodels.ProfileState
+import kz.singularity.jetpackcomposemost.util.Routes
+import kz.singularity.presentation.R
 
 @Composable
 fun ProfileContent(state: ProfileState, navController: NavController) {
@@ -51,20 +54,25 @@ fun CurrentProfile(user: User, navController: NavController) {
     val context = LocalContext.current
     val phoneNumber = user.phone.filter { it.isDigit() }.substring(0, 11)
     Column(
-        modifier = Modifier.fillMaxSize().background(color = Color.White).padding(16.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)
+            .padding(16.dp)
     ) {
         Text(
             text = user.username,
             color = Color.Black,
             fontWeight = FontWeight.Bold,
             fontSize = 28.sp,
-            modifier = Modifier.padding(top = 16.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth(),
             textAlign = TextAlign.Center
         )
 
-        InfoCard(title = "Contacts") {
+        InfoCard(title = stringResource(R.string.contacts)) {
             InfoRow(
-                label = "Email",
+                label = stringResource(R.string.email),
                 value = user.email,
                 labelColor = Color.Gray,
                 valueColor = Color.Blue,
@@ -77,13 +85,13 @@ fun CurrentProfile(user: User, navController: NavController) {
                 }
             )
             InfoRow(
-                label = "Full Name",
+                label = stringResource(R.string.full_name),
                 value = user.name,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Phone",
+                label = stringResource(R.string.phone),
                 value = phoneNumber,
                 labelColor = Color.Gray,
                 valueColor = Color.Red,
@@ -96,7 +104,7 @@ fun CurrentProfile(user: User, navController: NavController) {
                 }
             )
             InfoRow(
-                label = "Website",
+                label = stringResource(R.string.website),
                 value = user.website,
                 labelColor = Color.Gray,
                 valueColor = Color.Blue,
@@ -113,8 +121,11 @@ fun CurrentProfile(user: User, navController: NavController) {
         Card(
             modifier = Modifier
                 .clickable {
-                    navController.navigate("profile/todos/${user.id}")
+                    navController.navigate(
+                        Routes.TODOS.replace("{userId}", user.id.toString())
+                    )
                 }
+
             ,
             shape = RoundedCornerShape(8.dp),
             colors = CardDefaults.cardColors(containerColor = Color.White),
@@ -126,7 +137,7 @@ fun CurrentProfile(user: User, navController: NavController) {
                     .padding(8.dp)
             ) {
                 Text(
-                    text = "My ToDos",
+                    text = stringResource(R.string.my_todos),
                     color = Color.Red,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
@@ -138,21 +149,21 @@ fun CurrentProfile(user: User, navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        InfoCard(title = "Company") {
+        InfoCard(title = stringResource(R.string.company)) {
             InfoRow(
-                label = "Company Name",
+                label = stringResource(R.string.company_name),
                 value = user.company.name,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Catch Phrase",
+                label = stringResource(R.string.catch_phrase),
                 value = user.company.catchPhrase,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Business Services",
+                label = stringResource(R.string.business_services),
                 value = user.company.bs,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
@@ -161,27 +172,27 @@ fun CurrentProfile(user: User, navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        InfoCard(title = "Address") {
+        InfoCard(title = stringResource(R.string.address)) {
             InfoRow(
-                label = "Street",
+                label = stringResource(R.string.street),
                 value = user.address.street,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Suite",
+                label = stringResource(R.string.suite),
                 value = user.address.suite,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "City",
+                label = stringResource(R.string.city),
                 value = user.address.city,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Zipcode",
+                label = stringResource(R.string.zipcode),
                 value = user.address.zipcode,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
@@ -194,7 +205,7 @@ fun CurrentProfile(user: User, navController: NavController) {
                     .padding(8.dp)
             ) {
                 Text(
-                    text = "Show On Map",
+                    text = stringResource(R.string.show_on_map),
                     color = Color.Blue,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
@@ -202,7 +213,11 @@ fun CurrentProfile(user: User, navController: NavController) {
                     modifier = Modifier
                         .align(Alignment.Center)
                         .clickable {
-                            val geoUri = Uri.parse("geo:${user.address.geo.lat},${user.address.geo.lng}?q=${Uri.encode("${user.address.geo.lat},${user.address.geo.lng}")}")
+                            val geoUri = Uri.parse(
+                                "geo:${user.address.geo.lat},${user.address.geo.lng}?q=${
+                                    Uri.encode("${user.address.geo.lat},${user.address.geo.lng}")
+                                }"
+                            )
                             val mapIntent = Intent(Intent.ACTION_VIEW, geoUri).apply {
                                 setPackage("com.google.android.apps.maps")
                             }

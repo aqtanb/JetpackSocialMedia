@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.PostCard
+import kz.singularity.jetpackcomposemost.util.Routes
 
 @Composable
 fun PostContent(state: PostState, navController: NavHostController) {
@@ -43,9 +44,11 @@ fun PostList(state: PostState, navController: NavHostController) {
                 title = item.title,
                 body = item.body,
                 modifier = Modifier.clickable {
-                    navController.navigate("posts/postDetail/${item.id}/${item.userId}")
+                    val route = Routes.POST_DETAIL
+                        .replace("{postId}", item.id.toString())
+                        .replace("{userId}", item.userId.toString())
+                    navController.navigate(route)
                 }
-
             )
         }
     }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Сингулярность</string>
+    <string name="loading">Загрузка…</string>
+    <string name="change_the_grid">Изменить сетку</string>
+    <string name="comments">Комментарии</string>
+    <string name="by">Автор</string>
+    <string name="show_all">Показать все</string>
+    <string name="contacts">Контакты</string>
+    <string name="email">Электронная почта</string>
+    <string name="full_name">Полное имя</string>
+    <string name="phone">Телефон</string>
+    <string name="website">Веб-сайт</string>
+    <string name="my_todos">Мои задачи</string>
+    <string name="company">Компания</string>
+    <string name="company_name">Название компании</string>
+    <string name="catch_phrase">Слоган</string>
+    <string name="business_services">Бизнес-услуги</string>
+    <string name="address">Адрес</string>
+    <string name="street">Улица</string>
+    <string name="suite">Квартира</string>
+    <string name="city">Город</string>
+    <string name="zipcode">Почтовый индекс</string>
+    <string name="show_on_map">Показать на карте</string>
+    <string name="your_todos">Ваши задачи</string>
+    <string name="album_image">Изображение альбома</string>
+    <string name="error_loading_image">Ошибка загрузки изображения</string>
+    <string name="users">Пользователи</string>
+    <string name="albums">Альбомы</string>
+    <string name="profile">Профиль</string>
+    <string name="posts">Посты</string>
+</resources>

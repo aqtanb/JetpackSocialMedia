@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Photo
 import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.AlbumCard
+import kz.singularity.presentation.R
 
 @Composable
 fun PhotoContent(albumState: AlbumState, username: String?, albumIdInt: Int) {
@@ -117,7 +119,7 @@ fun PhotoInfo(
         modifier = Modifier.fillMaxSize()
     ) {
         Text(
-            text = albumState.albums.find {it.id == albumIdInt}?.title ?: "Loading...",
+            text = albumState.albums.find {it.id == albumIdInt}?.title ?: stringResource(R.string.loading),
             fontWeight = FontWeight.Bold,
             color = Color.Black,
             fontSize = 24.sp
@@ -142,12 +144,12 @@ fun PhotoInfo(
                 if (!isGrid) {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowDown,
-                        contentDescription = "Change the Grid"
+                        contentDescription = stringResource(R.string.change_the_grid)
                     )
                 } else {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowUp,
-                        contentDescription = "Change the Grid"
+                        contentDescription = stringResource(R.string.change_the_grid)
                     )
                 }
             }

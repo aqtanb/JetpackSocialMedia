@@ -19,11 +19,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.User
+import kz.singularity.presentation.R
 
 @Composable
 fun UserProfileContent(user: User) {
@@ -42,9 +44,9 @@ fun UserProfileContent(user: User) {
             textAlign = TextAlign.Center
         )
 
-        InfoCard(title = "Contacts") {
+        InfoCard(title = stringResource(R.string.contacts)) {
             InfoRow(
-                label = "Email",
+                label = stringResource(R.string.email),
                 value = user.email,
                 labelColor = Color.Gray,
                 valueColor = Color.Blue,
@@ -57,13 +59,13 @@ fun UserProfileContent(user: User) {
                 }
             )
             InfoRow(
-                label = "Full Name",
+                label = stringResource(R.string.full_name),
                 value = user.name,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Phone",
+                label = stringResource(R.string.phone),
                 value = phoneNumber,
                 labelColor = Color.Gray,
                 valueColor = Color.Red,
@@ -76,7 +78,7 @@ fun UserProfileContent(user: User) {
                 }
             )
             InfoRow(
-                label = "Website",
+                label = stringResource(R.string.website),
                 value = user.website,
                 labelColor = Color.Gray,
                 valueColor = Color.Blue,
@@ -90,21 +92,21 @@ fun UserProfileContent(user: User) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        InfoCard(title = "Company") {
+        InfoCard(title = stringResource(R.string.company)) {
             InfoRow(
-                label = "Company Name",
+                label = stringResource(R.string.company_name),
                 value = user.company.name,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Catch Phrase",
+                label = stringResource(R.string.catch_phrase),
                 value = user.company.catchPhrase,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Business Services",
+                label = stringResource(R.string.business_services),
                 value = user.company.bs,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
@@ -113,27 +115,27 @@ fun UserProfileContent(user: User) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        InfoCard(title = "Address") {
+        InfoCard(title = stringResource(R.string.address)) {
             InfoRow(
-                label = "Street",
+                label = stringResource(R.string.street),
                 value = user.address.street,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Suite",
+                label = stringResource(R.string.suite),
                 value = user.address.suite,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "City",
+                label = stringResource(R.string.city),
                 value = user.address.city,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
             )
             InfoRow(
-                label = "Zipcode",
+                label = stringResource(R.string.zipcode),
                 value = user.address.zipcode,
                 labelColor = Color.Gray,
                 valueColor = Color.Black
@@ -146,7 +148,7 @@ fun UserProfileContent(user: User) {
                     .padding(8.dp)
             ) {
                 Text(
-                    text = "Show On Map",
+                    text = stringResource(R.string.show_on_map),
                     color = Color.Blue,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,

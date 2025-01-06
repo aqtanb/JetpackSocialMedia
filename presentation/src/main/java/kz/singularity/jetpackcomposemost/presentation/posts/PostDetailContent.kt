@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.posts.contents
+package kz.singularity.jetpackcomposemost.presentation.posts
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoRow
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import kz.singularity.jetpackcomposemost.domain.model.Comment
 import kz.singularity.jetpackcomposemost.domain.model.Post
-import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
 import kz.singularity.jetpackcomposemost.util.Routes
 import kz.singularity.presentation.R

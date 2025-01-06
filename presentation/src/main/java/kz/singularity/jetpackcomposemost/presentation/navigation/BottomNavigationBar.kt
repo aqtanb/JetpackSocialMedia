@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import kz.singularity.jetpackcomposemost.util.Constants
+import kz.singularity.jetpackcomposemost.util.UIConstants
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
@@ -24,30 +24,27 @@ fun BottomNavigationBar(navController: NavHostController) {
         modifier = Modifier.windowInsetsPadding(WindowInsets.navigationBars)
     ) {
 
-
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-
         val currentRoute = navBackStackEntry?.destination?.route
 
-
-        Constants.BottomNavItems.forEach { navItem ->
-
-
+        UIConstants.BottomNavItems.forEach { navItem ->
+            val isSelected = currentRoute?.startsWith(navItem.route) == true
+            val color = if (isSelected) Color.Magenta else Color.Gray
             BottomNavigationItem(
                 label = {
                     Text(
                         text = stringResource(id = navItem.label),
-                        color = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray
+                        color = color
                     )
                 },
                 icon = {
                     Icon(
                         imageVector = navItem.icon,
                         contentDescription = stringResource(id = navItem.label),
-                        tint = if (currentRoute?.startsWith(navItem.route) == true) Color.Magenta else Color.Gray
+                        tint = color
                     )
                 },
-                selected = currentRoute?.startsWith(navItem.route) == true,
+                selected = isSelected,
                 onClick = {
                     if (currentRoute != navItem.route) {
                         navController.navigate(navItem.route) {

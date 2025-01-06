@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.albums.contents
+package kz.singularity.jetpackcomposemost.presentation.albums
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -35,7 +35,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Photo
-import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.AlbumCard
 import kz.singularity.presentation.R
 

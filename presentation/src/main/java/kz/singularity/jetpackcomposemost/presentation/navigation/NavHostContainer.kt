@@ -7,15 +7,15 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import kz.singularity.jetpackcomposemost.presentation.albums.screens.AlbumScreen
-import kz.singularity.jetpackcomposemost.presentation.albums.screens.PhotoScreen
-import kz.singularity.jetpackcomposemost.presentation.posts.screens.CommentScreen
-import kz.singularity.jetpackcomposemost.presentation.posts.screens.PostDetailScreen
-import kz.singularity.jetpackcomposemost.presentation.posts.screens.PostScreen
-import kz.singularity.jetpackcomposemost.presentation.profile.screens.ProfileScreen
-import kz.singularity.jetpackcomposemost.presentation.profile.screens.TodoScreen
-import kz.singularity.jetpackcomposemost.presentation.users.screens.UserProfileScreen
-import kz.singularity.jetpackcomposemost.presentation.users.screens.UsersScreen
+import kz.singularity.jetpackcomposemost.presentation.albums.AlbumScreen
+import kz.singularity.jetpackcomposemost.presentation.albums.PhotoScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.CommentScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.PostDetailScreen
+import kz.singularity.jetpackcomposemost.presentation.posts.PostScreen
+import kz.singularity.jetpackcomposemost.presentation.profile.ProfileScreen
+import kz.singularity.jetpackcomposemost.presentation.profile.TodoScreen
+import kz.singularity.jetpackcomposemost.presentation.users.UserProfileScreen
+import kz.singularity.jetpackcomposemost.presentation.users.UsersScreen
 import kz.singularity.jetpackcomposemost.util.Routes
 
 @Composable

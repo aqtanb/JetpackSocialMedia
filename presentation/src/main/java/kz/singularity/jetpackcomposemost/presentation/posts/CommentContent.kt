@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.posts.contents
+package kz.singularity.jetpackcomposemost.presentation.posts
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.foundation.background
@@ -17,7 +17,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Comment
-import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.CommentCard
 import kz.singularity.presentation.R
 

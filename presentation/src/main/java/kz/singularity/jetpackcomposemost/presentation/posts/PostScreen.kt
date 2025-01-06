@@ -1,12 +1,10 @@
-package kz.singularity.jetpackcomposemost.presentation.posts.screens
+package kz.singularity.jetpackcomposemost.presentation.posts
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import kz.singularity.jetpackcomposemost.presentation.posts.contents.PostContent
-import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostViewModel
 
 @Composable
 fun PostScreen(navController: NavHostController) {

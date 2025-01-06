@@ -7,8 +7,12 @@ import javax.inject.Inject
 
 class GetAlbumUseCaseImpl @Inject constructor(
     private val albumRepository: AlbumRepository
+    // TODO: Photos Repository, User Repository, Album Mapper
 ): GetAlbumUseCase {
+    // TODO: Coroutine Scope
     override suspend fun invoke(): List<Album> {
         return albumRepository.getAlbums()
+        // TODO: With context
+        // TODO: albumsDeferred = async { Get Albums }, photos, users
     }
 }

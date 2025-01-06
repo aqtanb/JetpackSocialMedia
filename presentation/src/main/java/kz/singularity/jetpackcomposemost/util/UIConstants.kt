@@ -4,13 +4,12 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.ui.res.stringResource
 import kz.singularity.jetpackcomposemost.presentation.navigation.BottomNavItem
 import kz.singularity.presentation.R
 
 
 
-object Constants {
+object UIConstants {
     val BottomNavItems = listOf(
         BottomNavItem(
             icon = Icons.Filled.Home,

@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.posts.contents
+package kz.singularity.jetpackcomposemost.presentation.posts
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.foundation.background
@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.PostCard
 import kz.singularity.jetpackcomposemost.util.Routes
 

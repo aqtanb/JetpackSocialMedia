@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.users.contents
+package kz.singularity.jetpackcomposemost.presentation.users
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoRow
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
@@ -34,7 +34,6 @@ import kz.singularity.jetpackcomposemost.domain.model.Address
 import kz.singularity.jetpackcomposemost.domain.model.Company
 import kz.singularity.jetpackcomposemost.domain.model.Geo
 import kz.singularity.jetpackcomposemost.domain.model.User
-import kz.singularity.jetpackcomposemost.presentation.users.viewmodels.UsersState
 import kz.singularity.jetpackcomposemost.util.Routes
 import kz.singularity.presentation.R
 

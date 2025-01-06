@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.albums.contents
+package kz.singularity.jetpackcomposemost.presentation.albums
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,7 +17,6 @@ import androidx.navigation.NavHostController
 import kz.singularity.jetpackcomposemost.domain.model.Album
 import kz.singularity.jetpackcomposemost.domain.model.Photo
 import kz.singularity.jetpackcomposemost.domain.model.User
-import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumState
 import kz.singularity.jetpackcomposemost.presentation.ui.components.AlbumCard
 import kz.singularity.jetpackcomposemost.util.Routes
 

@@ -1,12 +1,10 @@
-package kz.singularity.jetpackcomposemost.presentation.albums.screens
+package kz.singularity.jetpackcomposemost.presentation.albums
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import kz.singularity.jetpackcomposemost.presentation.albums.contents.PhotoContent
-import kz.singularity.jetpackcomposemost.presentation.albums.viewmodels.AlbumViewModel
 
 
 @Composable

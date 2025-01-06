@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.posts.screens
+package kz.singularity.jetpackcomposemost.presentation.posts
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.runtime.Composable
@@ -6,9 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import kz.singularity.jetpackcomposemost.presentation.posts.contents.PostDetailContent
-import kz.singularity.jetpackcomposemost.presentation.posts.viewmodels.PostViewModel
-import kz.singularity.jetpackcomposemost.presentation.users.viewmodels.UsersViewModel
+import kz.singularity.jetpackcomposemost.presentation.users.UsersViewModel
 
 @Composable
 fun PostDetailScreen(
@@ -16,6 +14,8 @@ fun PostDetailScreen(
     userId: String?,
     navHostController: NavHostController
 ) {
+    //TODO: One screen - one ViewModel
+
     val postViewModel: PostViewModel = hiltViewModel()
     val usersViewModel: UsersViewModel = hiltViewModel()
 

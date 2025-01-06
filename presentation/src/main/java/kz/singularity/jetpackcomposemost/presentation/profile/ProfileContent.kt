@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.profile.contents
+package kz.singularity.jetpackcomposemost.presentation.profile
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoCard
 import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoRow
@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import kz.singularity.jetpackcomposemost.domain.model.User
-import kz.singularity.jetpackcomposemost.presentation.profile.viewmodels.ProfileState
 import kz.singularity.jetpackcomposemost.util.Routes
 import kz.singularity.presentation.R
 

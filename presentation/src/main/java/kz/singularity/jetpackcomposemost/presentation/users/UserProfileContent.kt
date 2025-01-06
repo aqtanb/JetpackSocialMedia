@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.users.contents
+package kz.singularity.jetpackcomposemost.presentation.users
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoCard
 import kz.singularity.jetpackcomposemost.presentation.ui.components.InfoRow

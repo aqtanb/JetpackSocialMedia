@@ -1,4 +1,4 @@
-package kz.singularity.jetpackcomposemost.presentation.profile.contents
+package kz.singularity.jetpackcomposemost.presentation.profile
 
 import kz.singularity.jetpackcomposemost.presentation.ui.components.LoadingState
 import androidx.compose.foundation.background
@@ -33,7 +33,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kz.singularity.jetpackcomposemost.domain.model.Todo
-import kz.singularity.jetpackcomposemost.presentation.profile.viewmodels.ProfileState
 import kz.singularity.presentation.R
 
 @Composable

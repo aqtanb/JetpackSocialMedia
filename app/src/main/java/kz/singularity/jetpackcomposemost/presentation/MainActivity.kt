@@ -1,6 +1,4 @@
 package kz.singularity.jetpackcomposemost.presentation
-
-import BottomNavigationBar
 import kz.singularity.jetpackcomposemost.presentation.navigation.NavHostContainer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,6 +8,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kz.singularity.jetpackcomposemost.presentation.navigation.BottomNavigationBar
 import kz.singularity.jetpackcomposemost.presentation.ui.theme.JetpackComposeMostTheme
 
 @AndroidEntryPoint

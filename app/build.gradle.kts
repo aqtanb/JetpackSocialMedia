@@ -102,3 +102,8 @@ dependencies {
     ksp (libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}

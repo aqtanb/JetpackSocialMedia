@@ -41,6 +41,7 @@ fun AlbumList(
     navController: NavController,
     users: List<User>,
     photos: List<Photo>
+    // TODO: on album clicked: Unit
     ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),

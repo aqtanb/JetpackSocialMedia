@@ -14,5 +14,6 @@ class GetAlbumUseCaseImpl @Inject constructor(
         return albumRepository.getAlbums()
         // TODO: With context
         // TODO: albumsDeferred = async { Get Albums }, photos, users
+        // TODO: Map Album with Photos
     }
 }

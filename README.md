@@ -16,10 +16,7 @@
 
 ## 📸 Screenshots
 ### Main Screens
-![Screen 1](images/posts.png)
-![Screen 2](images/albums.png)
-![Screen 3](images/users.png)
-![Screen 4](images/profile.png)
+![Screen 1](images/screens.png)
 
 ### Figma Project Overview
 ![Figma](images/figma.png)
